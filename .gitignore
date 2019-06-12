@@ -1,9 +1,5 @@
-#  Local .terraform directories
-**/.terraform/*
-
-# .tfstate files
 *.tfstate
-*.tfstate.*
-
-# .tfvars files
-*.tfvars
+*.tfstate.backup
+backend-secret/backend-secret
+.terraform/
+.kube_config
