@@ -6,4 +6,3 @@ resource "azurerm_resource_group" "learning" {
     environment = "Learning"
   }
 }
-

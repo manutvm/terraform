@@ -2,6 +2,7 @@
 resource "azurerm_resource_group" "terraform" {
   name     = "ResourceGroupTerraform"
   location = "South India"
+
   tags {
     environment = "Global"
   }
@@ -14,6 +15,7 @@ resource "azurerm_storage_account" "terraform" {
   location                 = "${azurerm_resource_group.terraform.location}"
   account_tier             = "Standard"
   account_replication_type = "LRS"
+
   tags {
     environment = "Terraform"
   }
