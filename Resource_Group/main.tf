@@ -1,8 +1,5 @@
-resource "azurerm_resource_group" "learning" {
-  name     = "LearningAzure"
-  location = "South India"
-
-  tags = {
-    environment = "Learning"
-  }
+module "resource_group" {
+  source   = "../Common"
+  name     = "${var.name}"
+  location = "${var.location}"
 }

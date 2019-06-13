@@ -1,3 +1,11 @@
+variable name {
+  default = "Learning"
+}
+
+variable location {
+  default = "South India"
+}
+
 terraform {
   backend "azurerm" {
     storage_account_name = "terraformstatelearning"
