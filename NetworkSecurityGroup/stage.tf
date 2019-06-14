@@ -1,17 +1,9 @@
-variable "name" {
+variable name {
   default = "Learning"
 }
 
-variable "location" {
-  default = "South India"
-}
-
-variable "address_space" {
-  default = "170.0.0.0/16"
-}
-
-variable "address_prefix" {
-  default = "170.0.1.0/24"
+variable private_ip_address {
+  default = "170.0.1.9"
 }
 
 terraform {
