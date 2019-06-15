@@ -2,12 +2,6 @@ data "azurerm_resource_group" "resource_group" {
   name = "ResourceGroup${var.name}"
 }
 
-data "azurerm_subnet" "vsubnet" {
-  name                 = "${var.name}AzureVnetSub"
-  virtual_network_name = "${var.name}AzureVnet"
-  resource_group_name  = "${data.azurerm_resource_group.resource_group.name}"
-}
-
 resource "azurerm_network_security_group" "networksg" {
   name                = "${var.name}NetworkSecurityGroup"
   location            = "${data.azurerm_resource_group.resource_group.location}"

@@ -2,10 +2,6 @@ variable "name" {
   default = "Learning"
 }
 
-variable "node" {
-  default = "node1"
-}
-
 variable "vm_size" {
   default = "Standard_D2s_v3"
 }
