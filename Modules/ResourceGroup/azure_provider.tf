@@ -1,4 +1,4 @@
 # Configure the Azure Provider
 provider "azurerm" {
-  version = "1.20"
+  version = "1.30"
 }
