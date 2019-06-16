@@ -9,7 +9,7 @@ node {
     ]
     )    
     stage("test"){
-        echo param.Directory
-        echo param.DEPLOY_ENV
+        echo ${Directory}
+        echo ${DEPLOY_ENV}
     }
 }
