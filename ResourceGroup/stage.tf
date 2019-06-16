@@ -10,6 +10,6 @@ terraform {
   backend "azurerm" {
     storage_account_name = "terraformstatelearning"
     container_name       = "terraformstate"
-    key                  = "${var.name}.ResourceGroup.terraform.state"
+    key                  = "Learning.ResourceGroup.terraform.state"
   }
 }

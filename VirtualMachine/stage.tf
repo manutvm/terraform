@@ -34,6 +34,6 @@ terraform {
   backend "azurerm" {
     storage_account_name = "terraformstatelearning"
     container_name       = "terraformstate"
-    key                  = "${var.name}.VirtualMachine.terraform.state"
+    key                  = "Learning.VirtualMachine.terraform.state"
   }
 }
