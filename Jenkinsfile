@@ -6,10 +6,13 @@ node{
     stage('Deploy Terraform Stage Container') {
         echo "Hello World!"
         dir("Terraform"){
-            sh "terraform init && terraform plan && terraform apply -auto-approve"
-            sh "export ARM_ACCESS_KEY=\$(grep primary_access_key terraform.tfstate | cut -d"\"" -f4)"            
+            sh "terraform init && terraform plan && terraform apply -auto-approve"         
         }
+    }
 
-        sh "echo $ARM_ACCESS_KEY"
+    stage("Deploy Resource Group"){
+        environment {
+            ARM_ACCESS_KEY = sh "export ARM_ACCESS_KEY=\$(grep primary_access_key terraform.tfstate | cut -d\"\"\" -f4)"   
+        }
     }
 }
