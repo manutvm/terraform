@@ -10,7 +10,7 @@ node{
         }
     }
 
-    withenv(['ARM_ACCESS_KEY="Hello World"']){
+    withEnv(['ARM_ACCESS_KEY="Hello World"']){
         stage("Deploy Resource Group"){
             sh "echo $ARM_ACCESS_KEY"
         }
