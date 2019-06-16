@@ -5,7 +5,8 @@ node{
 
     stage('Deploy Terraform Stage Container') {
         echo "Hello World!"
-        sh "cd Terraform"
-        sh "pwd"
+        dir("Terraform"){
+            sh "pwd"
+        }
     }
 }
