@@ -12,7 +12,9 @@ node{
 
     withEnv(['ARM_ACCESS_KEY=YBelPNzXSeFOoQE+fIRdD3NjMNVLkbsFIswLQuYX1F0htFlzhvlrLVWYHFkqwpFhEZVpdRc0In+Np0XvRuJm+A==']){
         stage("Deploy Resource Group"){
-            sh "echo \${ARM_ACCESS_KEY}"
+            dir("ResourceGroup"){
+                sh "export \${ARM_ACCESS_KEY} && pwd"
+            }
         }
     }
 }
