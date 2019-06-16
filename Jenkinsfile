@@ -2,16 +2,18 @@ node {
   properties(
     [
         parameters(
-            [string(defaultValue: '/data', name: 'Directory'),
-            , string(defaultValue: 'Dev', name: 'DEPLOY_ENV')]
+            [choice(
+                choices: ['--- Select Choice ---','create','destroy'],
+                descrition: 'Select Choice(Create/Destroy) Resouce',
+                name: 'choice'
+            )]
             )
 
     ]
     )    
     stage("test"){
-        echo params.Directory
-        if(params.DEPLOY_ENV == "Dev"){
-            echo params.DEPLOY_ENV
+        if(params.choice == "create"){
+            echo "Hu... Creating Cluster..."
         }
     }
 }
