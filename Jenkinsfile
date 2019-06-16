@@ -15,8 +15,6 @@ node{
             ARM_ACCESS_KEY = sh "export ARM_ACCESS_KEY=\$(grep primary_access_key terraform.tfstate | cut -d\"\"\" -f4)"   
         }
 
-        steps{
-            sh "echo $ARM_ACCESS_KEY"
-        }
+        sh "echo $ARM_ACCESS_KEY"
     }
 }
