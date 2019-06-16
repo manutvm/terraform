@@ -10,6 +10,8 @@ node {
     )    
     stage("test"){
         echo params.Directory
-        echo params.DEPLOY_ENV
+        if(params.DEPLOY_ENV == "Dev"){
+            echo params.DEPLOY_ENV
+        }
     }
 }
