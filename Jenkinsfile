@@ -1,12 +1,11 @@
 node{
-    stage("checkout"){
+    stage("Checkout SCM"){
         checkout scm
     }
 
-    stage('build') {
+    stage('Deploy Terraform Stage Container') {
         echo "Hello World!"
-        sh "echo Hello from the shell"
-        sh "hostname"
-        sh "uptime"
+        sh "cd Terraform"
+        sh "pwd"
     }
 }
