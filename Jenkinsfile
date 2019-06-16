@@ -6,7 +6,7 @@ node{
     stage('Deploy Terraform Stage Container') {
         echo "Hello World!"
         dir("Terraform"){
-            sh "pwd"
+            sh "terraform init && terraform plan && terraform apply -auto-approve"
         }
     }
 }
