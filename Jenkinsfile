@@ -4,7 +4,7 @@ node {
         parameters(
             [choice(
                 choices: ['--- Select Choice ---','create','destroy'],
-                descrition: 'Select Choice(Create/Destroy) Resouce',
+                description: 'Select Choice(Create/Destroy) Resouce',
                 name: 'choice'
             )]
             )
