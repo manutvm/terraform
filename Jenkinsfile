@@ -14,7 +14,9 @@ node{
         stage("Deploy Resource Group"){
             echo "Deploying Azure Terraform Resource Group..."
             dir("ResourceGroup"){
-                sh "export ARM_ACCESS_KEY=\${ARM_ACCESS_KEY} && terraform init && terraform plan && terraform apply -auto-approve"
+                sh """
+                export ARM_ACCESS_KEY=\${ARM_ACCESS_KEY} && terraform init && terraform state rm `terraform state list | tr \"\n\" \" \"` && terraform plan && terraform apply -auto-approve
+                """
             }
         }
     }
@@ -24,7 +26,7 @@ node{
             echo "Deploying Azure Terraform Virtual Network..."
             dir("VirtualNetwork"){
                 sh """
-                export ARM_ACCESS_KEY=\${ARM_ACCESS_KEY} && terraform init && terraform plan && terraform apply -auto-approve
+                export ARM_ACCESS_KEY=\${ARM_ACCESS_KEY} && terraform init && terraform state rm `terraform state list | tr \"\n\" \" \"` && terraform plan && terraform apply -auto-approve
                 """
             }
         }
@@ -35,7 +37,7 @@ node{
             echo "Deploying Azure Terraform Network Security Group..."
             dir("NetworkSecurityGroup"){
                 sh """
-                export ARM_ACCESS_KEY=\${ARM_ACCESS_KEY} && terraform init && terraform plan && terraform apply -auto-approve
+                export ARM_ACCESS_KEY=\${ARM_ACCESS_KEY} && terraform init && terraform state rm `terraform state list | tr \"\n\" \" \"` && terraform plan && terraform apply -auto-approve
                 """
             }
         }
@@ -46,7 +48,7 @@ node{
             echo "Deploying Azure Terraform Virtual Machine..."
             dir("VirtualMachine"){
                 sh """
-                export ARM_ACCESS_KEY=\${ARM_ACCESS_KEY} && terraform init && terraform plan && terraform apply -auto-approve
+                export ARM_ACCESS_KEY=\${ARM_ACCESS_KEY} && terraform init && terraform state rm `terraform state list | tr \"\n\" \" \"` && terraform plan && terraform apply -auto-approve
                 """
             }
         }
