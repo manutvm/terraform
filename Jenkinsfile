@@ -4,9 +4,9 @@ node{
     }
 
     stage('Deploy Terraform Stage Container') {
-        echo "Hello World!"
+        echo "Deploying Azure Terraform Storage Container..."
         dir("Terraform"){
-            sh "terraform init && terraform plan && terraform apply -auto-approve"         
+            sh "echo \"terraform init && terraform plan && terraform apply -auto-approve\""            
         }
     }
 
