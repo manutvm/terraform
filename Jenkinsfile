@@ -1,5 +1,5 @@
-node {
-  properties(
+node{
+    properties(
     [
         parameters(
             [choice(
@@ -11,9 +11,17 @@ node {
 
     ]
     )    
-    stage("test"){
-        if(params.choice == "create"){
-            echo "Hu... Creating Cluster..."
+
+    stage("Checkout SCM"){
+        checkout scm
+    }
+
+    stage('Deploy Terraform Stage Container') {
+        if(params.choice=="create"){
+            echo "Deploying Azure Terraform Storage Container..."
+            dir("Terraform"){
+                sh "terraform init && terraform plan && terraform apply -auto-approve"            
+            }
         }
     }
 }
