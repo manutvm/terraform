@@ -10,7 +10,7 @@ node{
         }
     }
 
-    withEnv(['ARM_ACCESS_KEY = sh "grep primary_access_key Terraform/terraform.tfstate | cut -d\"\"\" -f4"']){
+    withEnv(['ARM_ACCESS_KEY = YBelPNzXSeFOoQE+fIRdD3NjMNVLkbsFIswLQuYX1F0htFlzhvlrLVWYHFkqwpFhEZVpdRc0In+Np0XvRuJm+A==']){
         stage("Deploy Resource Group"){
             sh "echo ${ARM_ACCESS_KEY}"
         }
