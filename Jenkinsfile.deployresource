@@ -1,0 +1,70 @@
+node{
+    properties(
+    [
+        parameters(
+            [choice(
+                choices: ['--- Select Choice ---','create','destroy'],
+                description: 'Select Choice(Create/Destroy) Resouce',
+                name: 'choice'
+            )]
+            )
+
+    ]
+    )    
+
+    stage("Checkout SCM"){
+        checkout scm
+    }
+
+    withEnv(['ARM_ACCESS_KEY=YBelPNzXSeFOoQE+fIRdD3NjMNVLkbsFIswLQuYX1F0htFlzhvlrLVWYHFkqwpFhEZVpdRc0In+Np0XvRuJm+A==']){
+        stage("Deploy Resource Group"){
+            if(params.choice=="create"){
+                echo "Deploying Azure Terraform Resource Group..."
+                dir("ResourceGroup"){
+                    sh """
+                    export ARM_ACCESS_KEY=\${ARM_ACCESS_KEY} && terraform init && terraform state rm `terraform state list | tr \"\n\" \" \"` ; terraform plan && terraform apply -auto-approve
+                    """
+                }
+            }
+        }
+    }
+
+    withEnv(['ARM_ACCESS_KEY=YBelPNzXSeFOoQE+fIRdD3NjMNVLkbsFIswLQuYX1F0htFlzhvlrLVWYHFkqwpFhEZVpdRc0In+Np0XvRuJm+A==']){
+        stage("Deploy Virtual Network"){
+            if(params.choice=="create"){
+                echo "Deploying Azure Terraform Virtual Network..."
+                dir("VirtualNetwork"){
+                    sh """
+                    export ARM_ACCESS_KEY=\${ARM_ACCESS_KEY} && terraform init && terraform state rm `terraform state list | tr \"\n\" \" \"` ; terraform plan && terraform apply -auto-approve
+                    """
+                }
+            }
+        }
+    }
+
+    withEnv(['ARM_ACCESS_KEY=YBelPNzXSeFOoQE+fIRdD3NjMNVLkbsFIswLQuYX1F0htFlzhvlrLVWYHFkqwpFhEZVpdRc0In+Np0XvRuJm+A==']){
+        stage("Deploy Network Security Group"){
+            if(params.choice=="create"){
+                echo "Deploying Azure Terraform Network Security Group..."
+                dir("NetworkSecurityGroup"){
+                    sh """
+                    export ARM_ACCESS_KEY=\${ARM_ACCESS_KEY} && terraform init && terraform state rm `terraform state list | tr \"\n\" \" \"` ; terraform plan && terraform apply -auto-approve
+                    """
+                }
+            }
+        }
+    }
+
+    withEnv(['ARM_ACCESS_KEY=YBelPNzXSeFOoQE+fIRdD3NjMNVLkbsFIswLQuYX1F0htFlzhvlrLVWYHFkqwpFhEZVpdRc0In+Np0XvRuJm+A==']){
+        stage("Deploy Virtual Machine"){
+            if(params.choice=="create"){
+                echo "Deploying Azure Terraform Virtual Machine..."
+                dir("VirtualMachine"){
+                    sh """
+                    export ARM_ACCESS_KEY=\${ARM_ACCESS_KEY} && terraform init && terraform state rm `terraform state list | tr \"\n\" \" \"` ; terraform plan && terraform apply -auto-approve
+                    """
+                }
+            }
+        }
+    }
+}
